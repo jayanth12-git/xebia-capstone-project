@@ -12,7 +12,7 @@ import {
   DashboardStats,
 } from "./types";
 
-const BASE_URL = "https://xebia-capstone-project.onrender.com"; // Relative to the host since we run Express on port 3000 alongside Vite middleware
+const BASE_URL = "https://xebia-capstone-project-1.onrender.com"; // Relative to the host since we run Express on port 3000 alongside Vite middleware
 
 // Token Helpers
 export function getAccessToken(): string | null {
