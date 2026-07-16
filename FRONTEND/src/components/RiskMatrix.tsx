@@ -21,7 +21,7 @@ export const RiskMatrix: React.FC<RiskMatrixProps> = ({ theme, selectedProtocolI
 
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
-  const [category, setCategory] = useState("CLINICAL");
+  const [category, setCategory] = useState("SAFETY");
   const [probability, setProbability] = useState(3);
   const [impact, setImpact] = useState(3);
   const [mitigationPlan, setMitigationPlan] = useState("");
@@ -97,7 +97,7 @@ export const RiskMatrix: React.FC<RiskMatrixProps> = ({ theme, selectedProtocolI
   const resetForm = () => {
     setTitle("");
     setDescription("");
-    setCategory("CLINICAL");
+    setCategory("SAFETY");
     setProbability(3);
     setImpact(3);
     setMitigationPlan("");
@@ -254,12 +254,13 @@ export const RiskMatrix: React.FC<RiskMatrixProps> = ({ theme, selectedProtocolI
                 value={category} onChange={e => setCategory(e.target.value)}
                 className="w-full px-3 py-2 rounded-lg bg-slate-100 dark:bg-slate-900 border border-transparent dark:border-slate-800 text-xs text-slate-800 dark:text-slate-100 focus:outline-none focus:border-sky-500 font-semibold"
               >
-                <option value="CLINICAL">Clinical / Cognitive</option>
                 <option value="SAFETY">Patient Safety</option>
-                <option value="OPERATIONAL">Operational / Sites</option>
+                <option value="OPERATIONAL">Operational</option>
                 <option value="REGULATORY">Regulatory</option>
-                <option value="DATA_MANAGEMENT">Data Management</option>
-                <option value="OTHER">Other Categories</option>
+                <option value="DATA_INTEGRITY">Data Integrity</option>
+                <option value="FINANCIAL">Financial</option>
+                <option value="RECRUITMENT">Recruitment</option>
+                <option value="OTHER">Other</option>
               </select>
             </div>
 
