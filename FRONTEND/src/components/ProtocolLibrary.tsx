@@ -74,8 +74,13 @@ export const ProtocolLibrary: React.FC<ProtocolLibraryProps> = ({
         phase,
       });
 
-      if (res.success && res.data) {
-        setProtocols(res.data);
+        if (res.success) {
+          setProtocols(res.data?.protocols ?? []);
+          setTotalItems(res.meta?.total ?? 0);
+          setTotalPages(res.meta?.totalPages ?? 1);
+      }
+
+   
         if (res.meta) {
           setTotalItems(res.meta.total);
           setTotalPages(res.meta.totalPages);

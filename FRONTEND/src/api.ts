@@ -125,7 +125,10 @@ export const api = {
         query.set(key, String(val));
       }
     });
-    return request<Protocol[]>(`/api/protocols?${query.toString()}`, { method: "GET" });
+    return request<{ protocols: Protocol[] }>(
+      `/api/protocols?${query.toString()}`,
+      { method: "GET" }
+    );
   },
 
   async createProtocol(body: Partial<Protocol>) {
