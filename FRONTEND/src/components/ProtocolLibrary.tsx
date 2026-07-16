@@ -73,12 +73,17 @@ export const ProtocolLibrary: React.FC<ProtocolLibraryProps> = ({
         status,
         phase,
       });
-
         if (res.success) {
-          setProtocols(res.data?.protocols ?? []);
-          setTotalItems(res.meta?.total ?? 0);
-          setTotalPages(res.meta?.totalPages ?? 1);
-      }
+            console.log("===== Protocol API Response =====");
+            console.log("Full Response:", res);
+            console.log("Response Data:", res.data);
+            console.log("Protocols:", res.data?.protocols);
+            console.log("Is protocols array?", Array.isArray(res.data?.protocols));
+
+            setProtocols(Array.isArray(res.data?.protocols) ? res.data.protocols : []);
+            setTotalItems(res.meta?.total ?? 0);
+            setTotalPages(res.meta?.totalPages ?? 1);
+        }
 
    
         if (res.meta) {
@@ -101,10 +106,15 @@ export const ProtocolLibrary: React.FC<ProtocolLibraryProps> = ({
       if (res.success && res.data?.protocol) {
         setDetailedProtocol(res.data.protocol);
       }
-
       const verRes = await api.getVersionHistory(id);
-      if (verRes.success && verRes.data?.versions) {
-        setVersions(verRes.data.versions);
+
+      console.log("===== Versions API Response =====");
+      console.log("Versions Response:", verRes);
+      console.log("Versions:", verRes.data?.versions);
+      console.log("Is versions array?", Array.isArray(verRes.data?.versions));
+
+      if (verRes.success) {
+          setVersions(Array.isArray(verRes.data?.versions) ? verRes.data.versions : []);
       }
     } catch (err: any) {
       setErrorMsg("Failed to load details for " + id);
