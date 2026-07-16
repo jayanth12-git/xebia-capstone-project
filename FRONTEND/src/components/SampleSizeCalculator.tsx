@@ -198,30 +198,30 @@ export const SampleSizeCalculator: React.FC<SampleSizeProps> = ({ theme }) => {
               <div className="grid grid-cols-2 gap-4">
                 <div className="p-4 rounded-lg bg-sky-500/10 border border-sky-500/20 text-center">
                   <span className={`block text-2xl font-black font-mono tracking-tight text-sky-500`}>
-                    {result.sampleSize}
+                    {result.sampleSizePerGroup}
                   </span>
                   <span className="text-[9px] uppercase tracking-wider text-slate-400 font-bold">
-                    Base Cohort Size
+                    Participants per Group
                   </span>
                 </div>
                 <div className="p-4 rounded-lg bg-emerald-500/10 border border-emerald-500/20 text-center">
                   <span className={`block text-2xl font-black font-mono tracking-tight text-emerald-500`}>
-                    {result.totalSampleSizeWithDropout}
+                    {result.adjustedSampleSizeTotal}
                   </span>
                   <span className="text-[9px] uppercase tracking-wider text-slate-400 font-bold">
-                    Size with {dropoutRate * 100}% Dropout
+                    Total Participants Required
                   </span>
                 </div>
               </div>
 
               {/* Method info */}
               <div className="p-3 rounded-lg bg-slate-100 dark:bg-slate-900/60 border dark:border-slate-800/40 font-mono text-[10px] space-y-1">
-                <p><span className="text-slate-400">Calculation Method:</span> {result.calculationMethod}</p>
-                <p><span className="text-slate-400">Alpha Value:</span> {result.parameters.alpha}</p>
-                <p><span className="text-slate-400">Power Bound (1 - Beta):</span> {result.parameters.power}</p>
-                <p><span className="text-slate-400">Attrition Adjustment:</span> Inflated for {result.parameters.dropoutRate * 100}% dropouts</p>
-                {result.parameters.population && (
-                  <p><span className="text-slate-400">Finite Population size:</span> {result.parameters.population}</p>
+                <p><span className="text-slate-400">Calculation Method:</span> {result.explanation}</p>
+                <p><span className="text-slate-400">Alpha Value:</span> {result.inputs.alpha}</p>
+                <p><span className="text-slate-400">Power Bound (1 - Beta):</span> {result.inputs.power}</p>
+                <p><span className="text-slate-400">Attrition Adjustment:</span> Inflated for {result.inputs.dropoutRate * 100}% dropouts</p>
+                {result.inputs.population&& (
+                  <p><span className="text-slate-400">Finite Population size:</span> {result.inputs.population}</p>
                 )}
               </div>
 
