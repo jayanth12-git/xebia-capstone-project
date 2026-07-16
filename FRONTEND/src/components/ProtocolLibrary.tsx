@@ -63,6 +63,7 @@ export const ProtocolLibrary: React.FC<ProtocolLibraryProps> = ({
   const fetchProtocols = async () => {
     setLoading(true);
     setErrorMsg(null);
+
     try {
       const res = await api.listProtocols({
         page,
@@ -73,30 +74,31 @@ export const ProtocolLibrary: React.FC<ProtocolLibraryProps> = ({
         status,
         phase,
       });
-        if (res.success) {
-            console.log("===== Protocol API Response =====");
-            console.log("Full Response:", res);
-            console.log("Response Data:", res.data);
-            console.log("Protocols:", res.data?.protocols);
-            console.log("Is protocols array?", Array.isArray(res.data?.protocols));
 
-            setProtocols(Array.isArray(res.data?.protocols) ? res.data.protocols : []);
-            setTotalItems(res.meta?.total ?? 0);
-            setTotalPages(res.meta?.totalPages ?? 1);
-        }
+      console.log("===== Protocol API Response =====");
+      console.log("Full Response:", res);
+      console.log("Response Data:", res.data);
+      console.log("Protocols:", res.data?.protocols);
+      console.log("Is protocols array?", Array.isArray(res.data?.protocols));
 
-   
-        if (res.meta) {
-          setTotalItems(res.meta.total);
-          setTotalPages(res.meta.totalPages);
-        }
+      if (res.success) {
+        setProtocols(
+          Array.isArray(res.data?.protocols)
+            ? res.data.protocols
+            : []
+        );
+
+        setTotalItems(res.meta?.total ?? 0);
+        setTotalPages(res.meta?.totalPages ?? 1);
       }
     } catch (err: any) {
-      setErrorMsg(err.message || "Could not retrieve clinical protocols catalog.");
+      setErrorMsg(
+        err.message || "Could not retrieve clinical protocols catalog."
+      );
     } finally {
       setLoading(false);
     }
-  };
+};
 
   const fetchDetail = async (id: string) => {
     setDetailLoading(true);
@@ -109,9 +111,10 @@ export const ProtocolLibrary: React.FC<ProtocolLibraryProps> = ({
       const verRes = await api.getVersionHistory(id);
 
       console.log("===== Versions API Response =====");
-      console.log("Versions Response:", verRes);
-      console.log("Versions:", verRes.data?.versions);
-      console.log("Is versions array?", Array.isArray(verRes.data?.versions));
+      console.log(verRes);
+      console.log(verRes.data);
+      console.log(verRes.data?.versions);
+      console.log(Array.isArray(verRes.data?.versions));
 
       if (verRes.success) {
           setVersions(Array.isArray(verRes.data?.versions) ? verRes.data.versions : []);
