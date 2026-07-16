@@ -23,6 +23,7 @@
   "license": "MIT",
   "dependencies": {
     "@prisma/client": "^5.18.0",
+    "prisma": "^5.18.0",
     "bcrypt": "^6.0.0",
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",
@@ -36,8 +37,7 @@
     "uuid": "^14.0.1"
   },
   "devDependencies": {
-    "nodemon": "^3.1.4",
-    "prisma": "^5.18.0"
+    "nodemon": "^3.1.4"
   },
   "engines": {
   "node": "20.x"
