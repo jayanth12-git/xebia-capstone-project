@@ -182,7 +182,7 @@ export const ProtocolLibrary: React.FC<ProtocolLibraryProps> = ({
         inclusionCriteria: newInclusion,
         exclusionCriteria: newExclusion,
         studyDesign: newDesign,
-        population: newPopulation,
+        population: newPopulation ? Number(newPopulation) : null,
         durationWeeks: newDuration,
       });
 
